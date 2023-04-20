@@ -11,14 +11,18 @@
             <RowDefinition Height="116*"/>
             <RowDefinition Height="101*"/>
         </Grid.RowDefinitions>
-        <DataGrid Name="datagrid2" HorizontalAlignment="Center" CanUserAddRows="False" Height="176" Margin="0,10,0,0" VerticalAlignment="Top" Width="780" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <DataGrid Name="datagrid2" HorizontalAlignment="Center" CanUserAddRows="False" Height="176" Margin="0,10,0,0" VerticalAlignment="Top" Width="780" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="datagrid2_SelectionChanged"/>
         <Button Name="btn2" Content="первая таблица" HorizontalAlignment="Left" Margin="620,101,0,0" VerticalAlignment="Top" Height="65" Width="152" Click="btn2_Click" Grid.Row="1"/>
         <Button x:Name="dobavl" Content="добавить" HorizontalAlignment="Left" Margin="22,108,0,0" Grid.Row="1" VerticalAlignment="Top" Height="58" Width="127" Click="dobavl_Click"/>
         <TextBox x:Name="start" HorizontalAlignment="Left" Margin="238,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Height="33"/>
         <TextBox x:Name="end" HorizontalAlignment="Left" Margin="428,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Height="33"/>
-        <TextBox x:Name="stid" HorizontalAlignment="Left" Margin="610,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Height="33"/>
-        <ComboBox x:Name="box"  HorizontalAlignment="Left" Height="33" Margin="22,10,0,0" VerticalAlignment="Top" Width="200" SelectionChanged="box_SelectionChanged" Grid.Row="1"/>
-        <Button x:Name="q" Content="Удалить" HorizontalAlignment="Left" Margin="256,108,0,0" Grid.Row="1" VerticalAlignment="Top" Click="q_Click" Height="58" Width="126"/>
+        <ComboBox x:Name="box"  HorizontalAlignment="Left" Height="33" Margin="22,10,0,0" VerticalAlignment="Top" Width="200" SelectionChanged="box_SelectionChanged" Grid.Row="1">
+            <ComboBoxItem Content="ленина 21"/>
+            <ComboBoxItem Content="нежинская 7"/>
+        </ComboBox>
+        <Button x:Name="q" Content="Удалить" HorizontalAlignment="Left" Margin="193,108,0,0" Grid.Row="1" VerticalAlignment="Top" Click="q_Click" Height="58" Width="126"/>
+        <ComboBox x:Name="stid"  HorizontalAlignment="Left" Height="33" Margin="620,10,0,0" VerticalAlignment="Top" Width="152" SelectionChanged="box_SelectionChanged" Grid.Row="1"/>
+        <Button x:Name="update" Content="изменить" HorizontalAlignment="Left" Height="58" Margin="364,108,0,0" Grid.Row="1" VerticalAlignment="Top" Width="125" Click="update_Click"/>
 
     </Grid>
 </Window>

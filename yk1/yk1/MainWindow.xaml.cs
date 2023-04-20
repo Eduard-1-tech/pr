@@ -37,8 +37,10 @@ namespace yk1
 
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
+            this.Hide();
             second window = new second();
             window.ShowDialog();
+            
         }
 
         
@@ -47,9 +49,12 @@ namespace yk1
 
         private void del_Click(object sender, RoutedEventArgs e)
         {
-            var sel =datagrid.SelectedItem as DataRowView;
-            stuff.DeleteQuery((int)sel.Row[0]);
-            datagrid.ItemsSource = stuff.GetData();
+            if(datagrid.SelectedItem!= null) 
+            { 
+                var sel =datagrid.SelectedItem as DataRowView;
+                stuff.DeleteQuery((int)sel.Row[0]);
+                datagrid.ItemsSource = stuff.GetData();
+            }
         }
 
         private void dobavl_Click(object sender, RoutedEventArgs e)
@@ -63,6 +68,34 @@ namespace yk1
                 surname.Text = "";
                 last.Text = "";
                
+            }
+        }
+
+        private void update_Click(object sender, RoutedEventArgs e)
+        {
+            if (datagrid.SelectedItem != null)
+            {
+                if (name.Text != "" && surname.Text != "" && last.Text != "")
+                {
+                    object id = (datagrid.SelectedItem as DataRowView).Row[0];
+                    stuff.UpdateQuery(name.Text, surname.Text, last.Text, Convert.ToInt32(id));
+                    datagrid.ItemsSource = stuff.GetData();
+                    name.Text = "";
+                    surname.Text = "";
+                    last.Text = "";
+                }
+            }
+        }
+
+        private void datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (datagrid.SelectedItem != null)
+            {
+                
+                    name.Text = ((datagrid.SelectedItem as DataRowView).Row[1]).ToString();
+                    surname.Text = ((datagrid.SelectedItem as DataRowView).Row[2]).ToString();
+                    last.Text = ((datagrid.SelectedItem as DataRowView).Row[3]).ToString();
+                
             }
         }
     }
